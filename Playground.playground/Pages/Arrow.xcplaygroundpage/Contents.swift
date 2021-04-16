@@ -4,8 +4,8 @@
  
  Set the size of your desired canvas by adjusting the constants on lines 19 and 20.
  */
-let preferredWidth = 600
-let preferredHeight = 600
+let preferredWidth = 320
+let preferredHeight = 320
 /*:
  ## Required code
  
@@ -35,12 +35,7 @@ PlaygroundPage.current.liveView = canvas
  [Documentation](http://russellgordon.ca/CanvasGraphics/Documentation/) is available.
 
  */
-
-// Replace this comment with your first comment – what is the goal of the code you're about to write?
-
-//test another arrow
-
-//move atarting point to the center
+//function to move the turtle from bottom left to the center
 func turtleToCenter() {
     //move to bottom edge
     turtle.penUp()
@@ -59,33 +54,52 @@ func turtleToCenter() {
 
 turtleToCenter()
 
-//set a constant
-let squareSize = 10
+//move to left center
+turtle.left(by: 180)
+turtle.forward(steps: canvas.width / 2)
+turtle.left(by: 180)
 
-//create a function to draw arrow
-func drawAnotherArrow() {
+// draw arrow
+
+//set a constant
+let squareSize = 5
+
+
+//write another function
+func drawArrow() {
     turtle.penDown()
     turtle.currentHeading()
     turtle.forward(steps: 5 * squareSize)
     turtle.right(by: 90)
-    turtle.forward(steps: 1 * squareSize)
-    turtle.left(by: round(180 - (atan(3 / 2))))
-    turtle.drawSelf()
-    turtle.forward(steps: Int(round(Double(1 * squareSize) * Double(13.0).squareRoot())))
+    turtle.forward(steps: 2 * squareSize)
+    turtle.left(by: 135)
+    turtle.forward(steps: Int(round(Double(3 * squareSize) * Double(2.0).squareRoot())))
     // reaches the tip of the arrow
     turtle.left(by: 90)
-    turtle.forward(steps: Int(round(Double(1 * squareSize) * Double(13.0).squareRoot())))
-    turtle.left(by: 180 - atan(3/2))
-    turtle.forward(steps: 1 * squareSize)
+    turtle.forward(steps: Int(round(Double(3 * squareSize) * Double(2.0).squareRoot())))
+    turtle.left(by: 135)
+    turtle.forward(steps: 2 * squareSize)
     turtle.right(by: 90)
     turtle.forward(steps: 5 * squareSize)
     turtle.left(by: 90)
     turtle.forward(steps: 2 * squareSize)
     turtle.left(by: 90)
-    turtle.drawSelf()
+    //turtle.drawSelf()
 }
 
-drawAnotherArrow()
+
+for _ in stride(from: 0, through: 7, by: 1) {
+    drawArrow()
+    turtle.penUp()
+    turtle.forward(steps: 8 * squareSize)
+}
+
+//for y in stride(from: 0, through: 6, by: 1) {
+//    drawArrow()
+//    turtle.penUp()
+//    turtle.left(by: 90)
+//    turtle.forward(steps: 6 * squareSize)
+//}
 /*:
  ## Show the Live View
  Don't see any results?
