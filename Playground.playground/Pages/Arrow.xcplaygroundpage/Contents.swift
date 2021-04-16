@@ -4,8 +4,8 @@
  
  Set the size of your desired canvas by adjusting the constants on lines 19 and 20.
  */
-let preferredWidth = 320
-let preferredHeight = 320
+let preferredWidth = 480
+let preferredHeight = 480
 /*:
  ## Required code
  
@@ -35,6 +35,9 @@ PlaygroundPage.current.liveView = canvas
  [Documentation](http://russellgordon.ca/CanvasGraphics/Documentation/) is available.
 
  */
+//show axis
+canvas.drawAxes(withScale: true, by: 10, color: Color.blue)
+
 //function to move the turtle from bottom left to the center
 func turtleToCenter() {
     //move to bottom edge
@@ -52,54 +55,55 @@ func turtleToCenter() {
     turtle.right(by: 90)
 }
 
-turtleToCenter()
+//set a constant
+let squareSize = 10
 
-//move to left center
-turtle.left(by: 180)
-turtle.forward(steps: canvas.width / 2)
-turtle.left(by: 180)
+//move up 3 / 2 squareSize
+turtle.left(by: 90)
+turtle.forward(steps: 3 * squareSize / 2)
+turtle.right(by: 90)
 
 // draw arrow
 
-//set a constant
-let squareSize = 5
-
-
-//write another function
+//write a function
 func drawArrow() {
     turtle.penDown()
     turtle.currentHeading()
     turtle.forward(steps: 5 * squareSize)
     turtle.right(by: 90)
-    turtle.forward(steps: 2 * squareSize)
+    turtle.forward(steps: 3 * squareSize / 2)
     turtle.left(by: 135)
     turtle.forward(steps: Int(round(Double(3 * squareSize) * Double(2.0).squareRoot())))
     // reaches the tip of the arrow
     turtle.left(by: 90)
     turtle.forward(steps: Int(round(Double(3 * squareSize) * Double(2.0).squareRoot())))
     turtle.left(by: 135)
-    turtle.forward(steps: 2 * squareSize)
+    turtle.forward(steps: 3 * squareSize / 2)
     turtle.right(by: 90)
     turtle.forward(steps: 5 * squareSize)
     turtle.left(by: 90)
-    turtle.forward(steps: 2 * squareSize)
+    turtle.forward(steps: 3 * squareSize)
     turtle.left(by: 90)
     //turtle.drawSelf()
 }
 
-
-for _ in stride(from: 0, through: 7, by: 1) {
-    drawArrow()
+for _ in stride(from: 0, to: canvas.width / 6 / squareSize, by: 1) {
+    for _ in stride(from: 0, to: canvas.height / 8 / squareSize, by: 1) {
+        drawArrow()
+        turtle.penUp()
+        turtle.forward(steps: 8 * squareSize)
+    }
     turtle.penUp()
-    turtle.forward(steps: 8 * squareSize)
-}
+    turtle.left(by: 90)
+    turtle.forward(steps: 13 * squareSize / 2)
+    turtle.left(by: 90)
+    turtle.forward(steps: canvas.width)
+    turtle.left(by: 180)
 
-//for y in stride(from: 0, through: 6, by: 1) {
-//    drawArrow()
-//    turtle.penUp()
-//    turtle.left(by: 90)
-//    turtle.forward(steps: 6 * squareSize)
-//}
+}
+turtle.drawSelf()
+
+canvas.copyToClipboard()
 /*:
  ## Show the Live View
  Don't see any results?
