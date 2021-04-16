@@ -37,8 +37,55 @@ PlaygroundPage.current.liveView = canvas
  */
 
 // Replace this comment with your first comment – what is the goal of the code you're about to write?
-canvas.drawRectangle(at: Point(x: 50, y: 75), width: 100, height: 200)
 
+//test another arrow
+
+//move atarting point to the center
+func turtleToCenter() {
+    //move to bottom edge
+    turtle.penUp()
+    turtle.forward(steps: canvas.width / 2)
+    turtle.currentHeading()
+    
+    //move to the center
+    turtle.left(by: 90)
+    turtle.currentHeading()
+    turtle.penUp()
+    turtle.forward(steps: canvas.height / 2)
+    
+    //turn right
+    turtle.right(by: 90)
+}
+
+turtleToCenter()
+
+//set a constant
+let squareSize = 10
+
+//create a function to draw arrow
+func drawAnotherArrow() {
+    turtle.penDown()
+    turtle.currentHeading()
+    turtle.forward(steps: 5 * squareSize)
+    turtle.right(by: 90)
+    turtle.forward(steps: 1 * squareSize)
+    turtle.left(by: round(180 - (atan(3 / 2))))
+    turtle.drawSelf()
+    turtle.forward(steps: Int(round(Double(1 * squareSize) * Double(13.0).squareRoot())))
+    // reaches the tip of the arrow
+    turtle.left(by: 90)
+    turtle.forward(steps: Int(round(Double(1 * squareSize) * Double(13.0).squareRoot())))
+    turtle.left(by: 180 - atan(3/2))
+    turtle.forward(steps: 1 * squareSize)
+    turtle.right(by: 90)
+    turtle.forward(steps: 5 * squareSize)
+    turtle.left(by: 90)
+    turtle.forward(steps: 2 * squareSize)
+    turtle.left(by: 90)
+    turtle.drawSelf()
+}
+
+drawAnotherArrow()
 /*:
  ## Show the Live View
  Don't see any results?

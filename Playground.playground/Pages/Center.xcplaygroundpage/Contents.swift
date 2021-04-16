@@ -4,8 +4,8 @@
  
  Set the size of your desired canvas by adjusting the constants on lines 19 and 20.
  */
-let preferredWidth = 600
-let preferredHeight = 600
+let preferredWidth = 400
+let preferredHeight = 400
 /*:
  ## Required code
  
@@ -36,9 +36,56 @@ PlaygroundPage.current.liveView = canvas
 
  */
 
-// Replace this comment with your first comment – what is the goal of the code you're about to write?
-canvas.drawRectangle(at: Point(x: 50, y: 75), width: 100, height: 200)
+// Move the turtlt to middle bottom
+//turtle.forward(steps: canvas.width / 2)
+//turtle.drawSelf()
+//
+//turn left
+//turtle.left(by: 90)
+//
+//move up
+//turtle.forward(steps: canvas.height / 2)
+//turtle.drawSelf()
+//
+//turn right
+//turtle.right(by: 90)
+//turtle.drawSelf()
 
+//function to move the turtle from bottom left to the center
+func turtleToCenter() {
+    //move to bottom edge
+    turtle.penUp()
+    turtle.forward(steps: canvas.width / 2)
+    turtle.currentHeading()
+    
+    //move to the center
+    turtle.left(by: 90)
+    turtle.currentHeading()
+    turtle.penUp()
+    turtle.forward(steps: canvas.height / 2)
+    
+    //turn right
+    turtle.right(by: 90)
+}
+
+turtleToCenter()
+turtle.currentHeading()
+turtle.drawSelf()
+
+//facing up
+turtle.left(by: 90)
+turtle.currentHeading()
+turtle.drawSelf()
+
+//facing left
+turtle.left(by: 90)
+turtle.currentHeading()
+turtle.drawSelf()
+
+//facing down
+turtle.left(by: 90)
+turtle.currentHeading()
+turtle.drawSelf()
 /*:
  ## Show the Live View
  Don't see any results?
