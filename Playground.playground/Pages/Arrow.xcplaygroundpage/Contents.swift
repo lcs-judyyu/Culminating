@@ -36,7 +36,21 @@ PlaygroundPage.current.liveView = canvas
 
  */
 //show axis
-canvas.drawAxes(withScale: true, by: 10, color: Color.blue)
+//canvas.drawAxes(withScale: true, by: 10, color: Color.blue)
+
+//set colors
+let beige = Color.init(hue: 60,
+                       saturation: 7,
+                       brightness: 100,
+                       alpha: 100)
+
+//background
+canvas.fillColor = Color.purple
+canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: preferredHeight)
+
+//color
+canvas.lineColor = beige
+canvas.fillColor = beige
 
 //function to move the turtle from bottom left to the center
 func turtleToCenter() {
@@ -56,9 +70,10 @@ func turtleToCenter() {
 }
 
 //set a constant
-let squareSize = 10
+let squareSize = 10 //times 6 or 8, both results must be divisible to 480
 
 //move up 3 / 2 squareSize
+turtle.penUp()
 turtle.left(by: 90)
 turtle.forward(steps: 3 * squareSize / 2)
 turtle.right(by: 90)
@@ -87,8 +102,8 @@ func drawArrow() {
     //turtle.drawSelf()
 }
 
-for _ in stride(from: 0, to: canvas.width / 6 / squareSize, by: 1) {
-    for _ in stride(from: 0, to: canvas.height / 8 / squareSize, by: 1) {
+for _ in stride(from: 0, to: 8, by: 1) {
+    for _ in stride(from: 0, to: 8, by: 1) {
         drawArrow()
         turtle.penUp()
         turtle.forward(steps: 8 * squareSize)
@@ -97,7 +112,7 @@ for _ in stride(from: 0, to: canvas.width / 6 / squareSize, by: 1) {
     turtle.left(by: 90)
     turtle.forward(steps: 13 * squareSize / 2)
     turtle.left(by: 90)
-    turtle.forward(steps: canvas.width)
+    turtle.forward(steps: 64 * squareSize)
     turtle.left(by: 180)
 
 }
