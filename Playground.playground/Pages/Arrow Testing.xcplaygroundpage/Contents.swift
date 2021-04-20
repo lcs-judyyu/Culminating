@@ -35,9 +35,6 @@ PlaygroundPage.current.liveView = canvas
  [Documentation](http://russellgordon.ca/CanvasGraphics/Documentation/) is available.
 
  */
-
-// Replace this comment with your first comment – what is the goal of the code you're about to write?
-
 //test another arrow
 
 //move atarting point to the center

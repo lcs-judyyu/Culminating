@@ -140,6 +140,8 @@ for _ in stride(from: 1, through: 7, by: 1) {
     turtle.left(by: 90)
     turtle.penDown()
 }
+
+turtle.copySVGToClipboard()
 /*:
  ## Show the Live View
  Don't see any results?
