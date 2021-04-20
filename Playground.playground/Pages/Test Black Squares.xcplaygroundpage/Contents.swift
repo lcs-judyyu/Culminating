@@ -86,17 +86,17 @@ func drawOneRowOfSquares() {
 }
 
 //first and second pattern of squares (space 3, space 7)
-func drawFirstAndSecondPattern() {
+func drawFirstAndSecondPatternOfSquares() {
     turtle.penUp()
     turtle.forward(steps: 1 * squareSize / 3)
-    drawOneRowVerticalLines()
+    drawOneRowOfSquares()
     turtle.left(by: 90)
     turtle.forward(steps: 1 * squareSize)
     turtle.left(by: 90)
     turtle.forward(steps: preferredWidth + 1 * squareSize / 3)
     turtle.left(by: 180)
     turtle.forward(steps: 2 * squareSize / 3)
-    drawOneRowVerticalLines()
+    drawOneRowOfSquares()
     turtle.left(by: 90)
     turtle.forward(steps: 1 * squareSize)
     turtle.left(by: 90)
@@ -105,16 +105,16 @@ func drawFirstAndSecondPattern() {
 }
 
 //third and fourth pattern of squares (space 3, space 0)
-func drawThirdAndFourthPattern() {
+func drawThirdAndFourthPatternOfSquares() {
     turtle.penUp()
     turtle.forward(steps: 1 * squareSize / 3)
-    drawOneRowVerticalLines()
+    drawOneRowOfSquares()
     turtle.left(by: 90)
     turtle.forward(steps: 1 * squareSize)
     turtle.left(by: 90)
     turtle.forward(steps: preferredWidth + 1 * squareSize / 3)
     turtle.left(by: 180)
-    drawOneRowVerticalLines()
+    drawOneRowOfSquares()
     turtle.left(by: 90)
     turtle.forward(steps: 1 * squareSize)
     turtle.left(by: 90)
@@ -123,15 +123,15 @@ func drawThirdAndFourthPattern() {
 }
 
 //fill lines in the canvas
-func drawVerticalLines() {
+func drawSquare() {
 for _ in stride(from: 1, through: 3, by: 1) {
-    drawFirstAndSecondPattern()
-    drawThirdAndFourthPattern()
+    drawFirstAndSecondPatternOfSquares()
+    drawThirdAndFourthPatternOfSquares()
 }
-    drawFirstAndSecondPattern()
+    drawFirstAndSecondPatternOfSquares()
 }
 
-drawOneRowOfSquares()
+drawSquare()
 /*:
  ## Show the Live View
  Don't see any results?
