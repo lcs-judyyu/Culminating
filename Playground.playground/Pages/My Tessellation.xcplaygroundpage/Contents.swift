@@ -39,18 +39,20 @@ PlaygroundPage.current.liveView = canvas
 //canvas.drawAxes(withScale: true, by: 20, color: Color.blue)
 
 //set colors
-let grey = Color.init(hue: 0,
+let black = Color.black
+let lightgrey = Color.init(hue: 0,
                        saturation: 0,
                        brightness: 70,
                        alpha: 100)
+let darkgrey = Color.init(hue: 0,
+                       saturation: 0,
+                       brightness: 30,
+                       alpha: 100)
+let white = Color.white
 
-//background
-canvas.fillColor = grey
-canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: preferredHeight)
 
 //color
-//canvas.lineColor = Color.white
-turtle.setPenColor(to: Color.white)
+turtle.setPenColor(to: darkgrey)
 turtle.setPenSize(to: 2)
 
 //set a constant
@@ -85,7 +87,7 @@ func moveForwardHalfTurnRight() {
     turtle.right(by: 90)
 }
 
-// function to draw four squares
+// function to draw squares
 func drawSquares() {
     turtle.penDown()
     turtle.forward(steps: 2 * squareSize)
@@ -98,15 +100,31 @@ func drawSquares() {
     turtle.right(by: 90)
     turtle.forward(steps: 2 * squareSize)
 }
+
+func fillColorInOneSquare() {
+    turtle.beginFill()
+    drawSquares()
+    turtle.endFill()
+}
+
+func fillColorinSquares() {
+    turtle.setFillColor(to: white)
+    fillColorInOneSquare()
+    turtle.setFillColor(to: white)
+    fillColorInOneSquare()
+    turtle.setFillColor(to: black)
+    fillColorInOneSquare()
+    turtle.setFillColor(to: black)
+    fillColorInOneSquare()
+}
+
 //column
 for _ in stride(from: 1, through: 7, by: 1) {
 //row
     for _ in stride(from: 1, through: 7, by: 1) {
     
 //four squares as one shape
-    for _ in stride(from: 1, through: 4, by: 1) {
-    drawSquares()
-}
+    fillColorinSquares()
     turtle.penUp()
     turtle.forward(steps: 4 * squareSize)
     turtle.left(by: 90)
