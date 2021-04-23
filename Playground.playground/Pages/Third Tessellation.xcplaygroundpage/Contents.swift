@@ -4,7 +4,7 @@
  
  Set the size of your desired canvas by adjusting the constants on lines 19 and 20.
  */
-let preferredWidth = 600
+let preferredWidth = 500
 let preferredHeight = 600
 /*:
  ## Required code
@@ -58,10 +58,11 @@ func turtleToCenter() {
 //move to center
 
 //set a constant
-let squareSize = 20
+let squareSize = 15
 
 //draw one figure
 func drawOneFigure() {
+    turtle.penDown()
     turtle.left(by: 135)
     turtle.forward(steps: Int(round(Double(2 * squareSize) * Double(2.0).squareRoot())))
     turtle.right(by: 135)
@@ -86,6 +87,33 @@ func drawOneFigure() {
     //turn to face right
     turtle.left(by: 180)
 }
+
+//draw one row of figures
+func drawOneRowOfFigures() {
+    for _ in stride(from: 1, through: 5, by: 1) {
+        drawOneFigure()
+        turtle.penUp()
+        turtle.forward(steps: 2 * squareSize)
+        turtle.left(by: 90)
+        turtle.forward(steps: 2 * squareSize)
+        turtle.right(by: 90)
+        turtle.penDown()
+    }
+}
+
+//draw two rows and skip twp rows
+func drawTwoRowsOfFigures() {
+    drawOneRowOfFigures()
+    
+}
+
+// Draw a boundary for the tesselation
+canvas.defaultBorderWidth = 3
+canvas.drawShapesWithFill = false
+canvas.drawShapesWithBorders = true
+canvas.borderColor = Color(hue: 0, saturation: 25, brightness: 0, alpha: 25)
+canvas.drawRectangle(at: Point(x: 0, y: 0), width: 500, height: 500)
+
 //set colors
 let scarlet = Color.init(hue: 7,
                        saturation: 64,
@@ -103,10 +131,13 @@ let lightTeal = Color.init(hue: 138,
                        alpha: 100)
 
 //background
-canvas.fillColor = lightTeal //plot the tessellation on a light teal paper if possible, or use beige or white papers instead
-canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: preferredHeight)
+canvas.drawShapesWithFill = true
+canvas.drawShapesWithBorders = false
+//canvas.fillColor = lightOlive //plot the tessellation on a light olive paper if possible, or use beige or white papers instead
+//canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: preferredHeight)
 
-
+//move to starting point and draw two rows of scarlet figures
+turtle.forward(steps: preferredWidth - 2 * squareSize)
 
 drawOneFigure()
 /*:
