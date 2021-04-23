@@ -58,27 +58,12 @@ turtle.setPenSize(to: 2)
 //set a constant
 let squareSize = 20
 
-//function to move the turtle from bottom left to the center
-func turtleToCenter() {
-    //move to bottom edge
-    turtle.penUp()
-    turtle.forward(steps: canvas.width / 2)
-    turtle.currentHeading()
-    
-    //move to the center
-    turtle.left(by: 90)
-    turtle.currentHeading()
-    turtle.penUp()
-    turtle.forward(steps: canvas.height / 2)
-    
-    //turn right
-    turtle.right(by: 90)
-}
-
 //move turtle to (0, -2)
+func moveDownToDraw() {
 turtle.right(by: 90)
 turtle.forward(steps: 2 * squareSize)
 turtle.left(by: 90)
+}
 
 // function to move forward half a step and turn right
 func moveForwardHalfTurnRight() {
@@ -118,6 +103,9 @@ func fillColorinSquares() {
     fillColorInOneSquare()
 }
 
+//run all functions
+moveDownToDraw()
+
 //column
 for _ in stride(from: 1, through: 7, by: 1) {
 //row
@@ -140,8 +128,6 @@ for _ in stride(from: 1, through: 7, by: 1) {
     turtle.left(by: 90)
     turtle.penDown()
 }
-
-turtle.copySVGToClipboard()
 /*:
  ## Show the Live View
  Don't see any results?

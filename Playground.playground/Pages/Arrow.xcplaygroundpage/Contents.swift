@@ -54,38 +54,20 @@ canvas.fillColor = lightPurple
 canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: preferredHeight)
 
 //color
-canvas.lineColor = beige
-//turtle.setPenColor(to: beige)
-canvas.defaultLineWidth = 2
-turtle.setFillColor(to: beige)
-//turtle.beginFill()
-
-
-//function to move the turtle from bottom left to the center
-func turtleToCenter() {
-    //move to bottom edge
-    turtle.penUp()
-    turtle.forward(steps: canvas.width / 2)
-    turtle.currentHeading()
-    
-    //move to the center
-    turtle.left(by: 90)
-    turtle.currentHeading()
-    turtle.penUp()
-    turtle.forward(steps: canvas.height / 2)
-    
-    //turn right
-    turtle.right(by: 90)
-}
+turtle.setPenColor(to: beige)
+turtle.setPenSize(to: 2)
+//canvas.defaultLineWidth = 2
 
 //set a constant
 let squareSize = 10
 
 //move up 3 / 2 squareSize
+func moveUpToStartArrows() {
 turtle.penUp()
 turtle.left(by: 90)
 turtle.forward(steps: 3 * squareSize / 2)
 turtle.right(by: 90)
+}
 
 // draw arrow
 
@@ -111,6 +93,11 @@ func drawArrow() {
     //turtle.drawSelf()
 }
 
+
+//run all functions
+moveUpToStartArrows()
+
+//draw arrows
 for _ in stride(from: 0, to: 9, by: 1) {
     for _ in stride(from: 0, to: 9, by: 1) {
         drawArrow()
@@ -121,16 +108,11 @@ for _ in stride(from: 0, to: 9, by: 1) {
     turtle.left(by: 90)
     turtle.forward(steps: 13 * squareSize / 2)
     turtle.left(by: 90)
-    turtle.forward(steps: 72 * squareSize)//8 * squareSize * 9
+    turtle.forward(steps: 72 * squareSize) //8 * squareSize * 9
     turtle.left(by: 180)
 
 }
 
-//turtle.endFill()
-
-//turtle.drawSelf()
-
-turtle.copySVGToClipboard()
 /*:
  ## Show the Live View
  Don't see any results?

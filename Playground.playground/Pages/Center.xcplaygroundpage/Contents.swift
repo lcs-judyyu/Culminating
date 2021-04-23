@@ -35,22 +35,6 @@ PlaygroundPage.current.liveView = canvas
  [Documentation](http://russellgordon.ca/CanvasGraphics/Documentation/) is available.
 
  */
-
-// Move the turtlt to middle bottom
-//turtle.forward(steps: canvas.width / 2)
-//turtle.drawSelf()
-//
-//turn left
-//turtle.left(by: 90)
-//
-//move up
-//turtle.forward(steps: canvas.height / 2)
-//turtle.drawSelf()
-//
-//turn right
-//turtle.right(by: 90)
-//turtle.drawSelf()
-
 //function to move the turtle from bottom left to the center
 func turtleToCenter() {
     //move to bottom edge
@@ -68,7 +52,10 @@ func turtleToCenter() {
     turtle.right(by: 90)
 }
 
+//move to center
 turtleToCenter()
+
+//test headings
 turtle.currentHeading()
 turtle.drawSelf()
 
