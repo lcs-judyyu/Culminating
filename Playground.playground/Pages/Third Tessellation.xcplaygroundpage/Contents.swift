@@ -36,29 +36,10 @@ PlaygroundPage.current.liveView = canvas
 
  */
 //show axis
-canvas.drawAxes(withScale: true, by: 20, color: Color.blue)
-
-//function to move the turtle from bottom left to the center (just for testing)
-func turtleToCenter() {
-    //move to bottom edge
-    turtle.penUp()
-    turtle.forward(steps: canvas.width / 2)
-    turtle.currentHeading()
-    
-    //move to the center
-    turtle.left(by: 90)
-    turtle.currentHeading()
-    turtle.penUp()
-    turtle.forward(steps: canvas.height / 2)
-    
-    //turn right
-    turtle.right(by: 90)
-}
-
-//move to center
+canvas.drawAxes(withScale: true, by: 25, color: Color.blue)
 
 //set a constant
-let squareSize = 15
+let squareSize = 25
 
 //draw one figure
 func drawOneFigure() {
@@ -88,9 +69,9 @@ func drawOneFigure() {
     turtle.left(by: 180)
 }
 
-//draw one row of figures
-func drawOneRowOfFigures() {
-    for _ in stride(from: 1, through: 5, by: 1) {
+//draw three figures (first pattern)
+func drawThreeFigures() {
+    for _ in stride(from: 1, through: 3, by: 1) {
         drawOneFigure()
         turtle.penUp()
         turtle.forward(steps: 2 * squareSize)
@@ -101,10 +82,41 @@ func drawOneRowOfFigures() {
     }
 }
 
+//draw seven figures (second pattern)
+func drawSevenFigures() {
+    for _ in stride(from: 1, through: 2, by: 1) {
+        drawThreeFigures()
+    }
+    drawOneFigure()
+}
+
+//draw nine figures (third pattern)
+func drawNineFigures() {
+    for _ in stride(from: 1, through: 3, by: 1) {
+        drawThreeFigures()
+    }
+}
+
+
 //draw two rows and skip twp rows
-func drawTwoRowsOfFigures() {
-    drawOneRowOfFigures()
-    
+func drawFirstTwoRowsOfFigures() {
+    drawThreeFigures()
+    turtle.penUp()
+    turtle.goToHome()
+    turtle.forward(steps: 8 * squareSize)
+    turtle.right(by: 90)
+    turtle.forward(steps: 2 * squareSize)
+    turtle.left(by: 90)
+    turtle.penDown()
+    drawSevenFigures()
+}
+
+//move to starting point
+func moveToStartDrawing() {
+    turtle.forward(steps: preferredWidth - 4 * squareSize)
+    turtle.right(by: 90)
+    turtle.forward(steps: 2 * squareSize)
+    turtle.left(by: 90)
 }
 
 // Draw a boundary for the tesselation
@@ -133,13 +145,37 @@ let lightTeal = Color.init(hue: 138,
 //background
 canvas.drawShapesWithFill = true
 canvas.drawShapesWithBorders = false
-//canvas.fillColor = lightOlive //plot the tessellation on a light olive paper if possible, or use beige or white papers instead
+canvas.fillColor = lightOlive //NOTE: plot the tessellation on a light olive paper if possible, or use beige or white papers instead
 //canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: preferredHeight)
 
-//move to starting point and draw two rows of scarlet figures
-turtle.forward(steps: preferredWidth - 2 * squareSize)
+//start at bottom left corner and draw a test line
+//Note: use a scarlet pen, or a red pen instead
+//Note: adjust the position of the pen if the test line does not show on paper
+turtle.goToHome()
 
-drawOneFigure()
+// Draw a test line outside the tesselation boundary
+turtle.penUp()
+turtle.left(by: 90)
+turtle.forward(steps: preferredHeight - 20)
+turtle.right(by: 90)
+turtle.forward(steps: 10)
+turtle.penDown()
+turtle.setPenColor(to: scarlet)
+turtle.setPenSize(to: 2)
+turtle.forward(steps: 12 * squareSize)
+turtle.penUp()
+
+//move back to home
+turtle.goToHome()
+
+//move to starting point and draw two rows of scarlet figures
+moveToStartDrawing()
+
+turtle.setPenColor(to: scarlet)
+turtle.setPenSize(to: 3)
+drawFirstTwoRowsOfFigures()
+
+//skip two rows and draw
 /*:
  ## Show the Live View
  Don't see any results?
