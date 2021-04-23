@@ -41,7 +41,8 @@ canvas.drawAxes(withScale: true, by: 25, color: Color.blue)
 //set a constant
 let squareSize = 25
 
-//draw one figure
+//FUNCTIONS Section:
+//function to draw one figure
 func drawOneFigure() {
     turtle.penDown()
     turtle.left(by: 135)
@@ -69,7 +70,7 @@ func drawOneFigure() {
     turtle.left(by: 180)
 }
 
-//draw three figures (first pattern)
+//function to draw three figures (first pattern)
 func drawThreeFigures() {
     for _ in stride(from: 1, through: 3, by: 1) {
         drawOneFigure()
@@ -82,7 +83,7 @@ func drawThreeFigures() {
     }
 }
 
-//draw seven figures (second pattern)
+//function to draw seven figures (second pattern)
 func drawSevenFigures() {
     for _ in stride(from: 1, through: 2, by: 1) {
         drawThreeFigures()
@@ -90,15 +91,16 @@ func drawSevenFigures() {
     drawOneFigure()
 }
 
-//draw nine figures (third pattern)
-func drawNineFigures() {
+//function to draw ten figures (third pattern)
+func drawTenFigures() {
     for _ in stride(from: 1, through: 3, by: 1) {
         drawThreeFigures()
     }
+    drawOneFigure()
 }
 
 
-//draw two rows and skip twp rows
+//function to draw first two rows of scarlet figures
 func drawFirstTwoRowsOfFigures() {
     drawThreeFigures()
     turtle.penUp()
@@ -111,15 +113,34 @@ func drawFirstTwoRowsOfFigures() {
     drawSevenFigures()
 }
 
-//move to starting point
-func moveToStartDrawing() {
+//function to move to starting point of scarlet
+func moveToStartDrawingScarlet() {
     turtle.forward(steps: preferredWidth - 4 * squareSize)
     turtle.right(by: 90)
     turtle.forward(steps: 2 * squareSize)
     turtle.left(by: 90)
 }
 
-// Draw a boundary for the tesselation
+//function to move to starting point of light teal
+func moveToStartDrawingLightTeal() {
+    turtle.right(by: 90)
+    turtle.forward(steps: 2 * squareSize)
+    turtle.left(by: 90)
+}
+
+//function to draw two rows of light teal figures
+func drawThirdAndFourthRowsOfFigures() {
+    drawTenFigures()
+    turtle.penUp()
+    turtle.goToHome()
+    turtle.left(by: 90)
+    turtle.forward(steps: 6 * squareSize)
+    turtle.right(by: 90)
+    turtle.penDown()
+    drawSevenFigures()
+}
+
+//Draw a boundary for the tesselation
 canvas.defaultBorderWidth = 3
 canvas.drawShapesWithFill = false
 canvas.drawShapesWithBorders = true
@@ -135,33 +156,36 @@ let scarlet = Color.init(hue: 7,
 let lightOlive = Color.init(hue: 63,
                        saturation: 10,
                        brightness: 91,
-                       alpha: 100)
+                       alpha: 50)
 
 let lightTeal = Color.init(hue: 138,
                        saturation: 12,
                        brightness: 75,
                        alpha: 100)
 
+
+//DRAW TESSELLATION Section:
+//NOTE: the tessellation will go beyond the boundary because of the irreular shape of the figures
 //background
 canvas.drawShapesWithFill = true
 canvas.drawShapesWithBorders = false
 canvas.fillColor = lightOlive //NOTE: plot the tessellation on a light olive paper if possible, or use beige or white papers instead
-//canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: preferredHeight)
+canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: preferredHeight)
 
 //start at bottom left corner and draw a test line
-//Note: use a scarlet pen, or a red pen instead
-//Note: adjust the position of the pen if the test line does not show on paper
+//NOTE: use a scarlet pen, or a red pen instead
+//NOTE: adjust the position of the pen if the test line does not show on paper
 turtle.goToHome()
 
 // Draw a test line outside the tesselation boundary
 turtle.penUp()
 turtle.left(by: 90)
-turtle.forward(steps: preferredHeight - 20)
+turtle.forward(steps: preferredHeight - 35)
 turtle.right(by: 90)
 turtle.forward(steps: 10)
 turtle.penDown()
 turtle.setPenColor(to: scarlet)
-turtle.setPenSize(to: 2)
+turtle.setPenSize(to: 3)
 turtle.forward(steps: 12 * squareSize)
 turtle.penUp()
 
@@ -169,13 +193,50 @@ turtle.penUp()
 turtle.goToHome()
 
 //move to starting point and draw two rows of scarlet figures
-moveToStartDrawing()
+moveToStartDrawingScarlet()
 
 turtle.setPenColor(to: scarlet)
 turtle.setPenSize(to: 3)
 drawFirstTwoRowsOfFigures()
 
-//skip two rows and draw
+
+//skip two rows and one row of scarlet figures
+//go back to the origin and move up to start
+turtle.penUp()
+turtle.goToHome()
+turtle.left(by: 90)
+turtle.forward(steps: 14 * squareSize)
+turtle.right(by: 90)
+turtle.penDown()
+drawThreeFigures()
+
+
+//start at bottom left corner and draw a test line
+//NOTE: use a light teal pen, or a teal or blue pen instead
+//NOTE: adjust the position of the pen if the test line does not show on paper
+turtle.penUp()
+turtle.goToHome()
+
+// Draw a test line outside the tesselation boundary
+turtle.penUp()
+turtle.left(by: 90)
+turtle.forward(steps: preferredHeight - 65)
+turtle.right(by: 90)
+turtle.forward(steps: 10)
+turtle.penDown()
+turtle.setPenColor(to: lightTeal)
+turtle.setPenSize(to: 3)
+turtle.forward(steps: 12 * squareSize)
+turtle.penUp()
+
+//move back to home
+turtle.goToHome()
+
+//move to start to draw light teal figures
+moveToStartDrawingLightTeal()
+
+//draw two rows of light teal figures
+drawThirdAndFourthRowsOfFigures()
 /*:
  ## Show the Live View
  Don't see any results?
