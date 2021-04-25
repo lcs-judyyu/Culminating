@@ -4,8 +4,8 @@
  
  Set the size of your desired canvas by adjusting the constants on lines 19 and 20.
  */
-let preferredWidth = 400
-let preferredHeight = 450
+let preferredWidth = 600
+let preferredHeight = 650
 /*:
  ## Required code
  
@@ -36,7 +36,7 @@ PlaygroundPage.current.liveView = canvas
 
  */
 //set a constant
-let squareSize = 4 //preferredWidth / 100
+let squareSize = 6 //preferredWidth / 100
 
 //show axis
 canvas.drawAxes(withScale: true, by: 20, color: Color.blue)
@@ -79,6 +79,44 @@ func moveToDrawPinkSquare() {
     turtle.right(by: 62)
 }
 
+//function to draw the figure
+func drawFigure() {
+    //move to starting position
+    turtle.penUp()
+    turtle.forward(steps: 52 * squareSize)
+    turtle.left(by: 90)
+    turtle.forward(steps: 86 * squareSize)
+    //start drawing
+    //forehead
+    turtle.penDown()
+    turtle.left(by: 131)
+    turtle.forward(steps: 15 * squareSize / 2)
+    turtle.left(by: 8)
+    turtle.forward(steps: 10 * squareSize)
+    turtle.left(by: 3)
+    turtle.forward(steps: 16 * squareSize / 5)
+    
+    turtle.left(by: 3)
+    turtle.forward(steps: 10 * squareSize / 3)
+    turtle.left(by: 44)
+    turtle.forward(steps: 10 * squareSize / 3)
+    turtle.left(by: 16)
+    turtle.forward(steps: 47 * squareSize / 10)
+    
+    turtle.left(by: 25)
+    turtle.forward(steps: 42 * squareSize / 10)
+    turtle.right(by: 25)
+    turtle.forward(steps: 3 * squareSize / 2)
+    
+    //nose
+    turtle.right(by: 50)
+    turtle.forward(steps: 66 * squareSize / 5)
+    //mouth
+    //chin
+    //moon
+    
+}
+
 //SETTING Section:
 //Draw a boundary for the tesselation
 canvas.defaultBorderWidth = 3
@@ -112,7 +150,7 @@ turtle.forward(steps: 20)
 turtle.penDown()
 turtle.setPenColor(to: yellow)
 turtle.setPenSize(to: 3)
-turtle.forward(steps: 150)
+turtle.forward(steps: 30 * squareSize)
 turtle.penUp()
 //NOTE: adjust the position of the pen if the test line does not show on paper
 
@@ -138,7 +176,7 @@ turtle.forward(steps: 20)
 turtle.penDown()
 turtle.setPenColor(to: pink)
 turtle.setPenSize(to: 3)
-turtle.forward(steps: 150)
+turtle.forward(steps: 30 * squareSize)
 turtle.penUp()
 //NOTE: adjust the position of the pen if the test line does not show on paper
 
@@ -150,7 +188,31 @@ moveToDrawPinkSquare()
 turtle.setPenColor(to: pink)
 drawOneSquare()
 
+//return to bottom left corner and draw a test line
+//NOTE: use a black fine pen
+turtle.penUp()
+turtle.goToHome()
+
+// Draw a test line outside the tesselation boundary
+turtle.penUp()
+turtle.left(by: 90)
+turtle.forward(steps: preferredHeight - 20)
+turtle.right(by: 90)
+turtle.forward(steps: 250)
+turtle.penDown()
+turtle.setPenColor(to: Color.black)
+turtle.setPenSize(to: 1)
+turtle.forward(steps: 30 * squareSize)
+turtle.penUp()
+//NOTE: adjust the position of the pen if the test line does not show on paper
+
+//move back to home
+turtle.goToHome()
+
 canvas.highPerformance = false
+
+//draw the figure
+drawFigure()
 /*:
  ## Show the Live View
  Don't see any results?
