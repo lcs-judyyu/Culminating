@@ -36,7 +36,7 @@ PlaygroundPage.current.liveView = canvas
 
  */
 //show axis
-canvas.drawAxes(withScale: true, by: 25, color: Color.blue)
+//canvas.drawAxes(withScale: true, by: 25, color: Color.blue)
 
 //set a constant
 let squareSize = 25
@@ -91,11 +91,29 @@ func drawSevenFigures() {
     drawOneFigure()
 }
 
-//function to draw ten figures (third pattern)
+//function to draw ten figures (third)
 func drawTenFigures() {
     for _ in stride(from: 1, through: 3, by: 1) {
         drawThreeFigures()
     }
+    drawOneFigure()
+}
+
+//function to draw eight figures (fourth pattern)
+func drawEightFigures() {
+    drawSevenFigures()
+    turtle.penUp()
+    turtle.forward(steps: 2 * squareSize)
+    turtle.left(by: 90)
+    turtle.forward(steps: 2 * squareSize)
+    turtle.right(by: 90)
+    turtle.penDown()
+    drawOneFigure()
+}
+
+//function to draw four figures (fifth pattern)
+func drawFourFigures() {
+    drawThreeFigures()
     drawOneFigure()
 }
 
@@ -137,9 +155,63 @@ func drawThirdAndFourthRowsOfFigures() {
     turtle.forward(steps: 6 * squareSize)
     turtle.right(by: 90)
     turtle.penDown()
-    drawSevenFigures()
+    drawEightFigures()
 }
 
+//function to draw a diagonal line (fifth pattern)
+func drawOneLine() {
+    turtle.penDown()
+    turtle.left(by: 135)
+    turtle.forward(steps: Int(round(Double(2 * squareSize) * Double(2.0).squareRoot())))
+    turtle.left(by: 180)
+    turtle.forward(steps: Int(round(Double(2 * squareSize) * Double(2.0).squareRoot())))
+    turtle.left(by: 45)
+    turtle.penUp()
+}
+
+//function to draw three diagonal lines (first pattern)
+func drawThreeLines() {
+    for _ in stride(from: 1, through: 3, by: 1) {
+        drawOneLine()
+        turtle.penUp()
+        turtle.forward(steps: 2 * squareSize)
+        turtle.left(by: 90)
+        turtle.forward(steps: 2 * squareSize)
+        turtle.right(by: 90)
+        turtle.penDown()
+    }
+}
+
+//function to draw seven diagonal lines (second pattern)
+func drawSevenLines() {
+    for _ in stride(from: 1, through: 2, by: 1) {
+        drawThreeLines()
+    }
+    drawOneLine()
+}
+
+//function to draw nine diagonal lines (third pattern)
+func drawNineLines() {
+    for _ in stride(from: 1, through: 3, by: 1) {
+        drawThreeLines()
+    }
+}
+
+//function to draw five diagonal lines (fourth pattern)
+func drawFiveLines() {
+    for _ in stride(from: 1, through: 5, by: 1) {
+        drawOneLine()
+        turtle.penUp()
+        turtle.forward(steps: 2 * squareSize)
+        turtle.left(by: 90)
+        turtle.forward(steps: 2 * squareSize)
+        turtle.right(by: 90)
+        turtle.penDown()
+    }
+}
+
+
+//SETTING Section:
 //Draw a boundary for the tesselation
 canvas.defaultBorderWidth = 3
 canvas.drawShapesWithFill = false
@@ -156,7 +228,7 @@ let scarlet = Color.init(hue: 7,
 let lightOlive = Color.init(hue: 63,
                        saturation: 10,
                        brightness: 91,
-                       alpha: 50)
+                       alpha: 80)
 
 let lightTeal = Color.init(hue: 138,
                        saturation: 12,
@@ -174,7 +246,6 @@ canvas.drawRectangle(at: Point(x: 0, y: 0), width: preferredWidth, height: prefe
 
 //start at bottom left corner and draw a test line
 //NOTE: use a scarlet pen, or a red pen instead
-//NOTE: adjust the position of the pen if the test line does not show on paper
 turtle.goToHome()
 
 // Draw a test line outside the tesselation boundary
@@ -188,6 +259,7 @@ turtle.setPenColor(to: scarlet)
 turtle.setPenSize(to: 3)
 turtle.forward(steps: 12 * squareSize)
 turtle.penUp()
+//NOTE: adjust the position of the pen if the test line does not show on paper
 
 //move back to home
 turtle.goToHome()
@@ -208,12 +280,37 @@ turtle.left(by: 90)
 turtle.forward(steps: 14 * squareSize)
 turtle.right(by: 90)
 turtle.penDown()
-drawThreeFigures()
+drawFourFigures()
 
+//go back to the origin and move forward to draw three diagonal lines (first pattern)
+turtle.penUp()
+turtle.goToHome()
+turtle.forward(steps: 16 * squareSize)
+drawThreeLines()
 
+//go back to the origin and move up to draw five diagonal lines (fourth pattern)
+turtle.penUp()
+turtle.goToHome()
+turtle.forward(steps: 2 * squareSize)
+turtle.left(by: 90)
+turtle.forward(steps: 10 * squareSize)
+turtle.right(by: 90)
+turtle.penDown()
+drawFiveLines()
+
+//move left to draw one diagonal line (fifth fattern)
+turtle.penUp()
+turtle.left(by: 180)
+turtle.forward(steps: 10 * squareSize)
+turtle.left(by: 90)
+turtle.forward(steps: 2 * squareSize)
+turtle.left(by: 90)
+turtle.penDown()
+drawOneLine()
+
+//change pen
 //start at bottom left corner and draw a test line
 //NOTE: use a light teal pen, or a teal or blue pen instead
-//NOTE: adjust the position of the pen if the test line does not show on paper
 turtle.penUp()
 turtle.goToHome()
 
@@ -228,6 +325,7 @@ turtle.setPenColor(to: lightTeal)
 turtle.setPenSize(to: 3)
 turtle.forward(steps: 12 * squareSize)
 turtle.penUp()
+//NOTE: adjust the position of the pen if the test line does not show on paper
 
 //move back to home
 turtle.goToHome()
@@ -237,6 +335,21 @@ moveToStartDrawingLightTeal()
 
 //draw two rows of light teal figures
 drawThirdAndFourthRowsOfFigures()
+
+//go bak to origin and move right to draw seven lines (second pattern)
+turtle.penUp()
+turtle.goToHome()
+turtle.forward(steps: 8 * squareSize)
+drawSevenLines()
+
+//go back to origin and move up and right to draw nine lines (third pattern)
+turtle.penUp()
+turtle.goToHome()
+turtle.forward(steps: 2 * squareSize)
+turtle.left(by: 90)
+turtle.forward(steps: 2 * squareSize)
+turtle.right(by: 90)
+drawNineLines()
 /*:
  ## Show the Live View
  Don't see any results?
