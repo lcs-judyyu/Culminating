@@ -4,8 +4,8 @@
  
  Set the size of your desired canvas by adjusting the constants on lines 19 and 20.
  */
-let preferredWidth = 200
-let preferredHeight = 250
+let preferredWidth = 400
+let preferredHeight = 450
 /*:
  ## Required code
  
@@ -36,13 +36,48 @@ PlaygroundPage.current.liveView = canvas
 
  */
 //set a constant
-let squareSize = 2
+let squareSize = 4 //preferredWidth / 100
 
 //show axis
-canvas.drawAxes(withScale: true, by: 10, color: Color.blue)
+canvas.drawAxes(withScale: true, by: 20, color: Color.blue)
 
+//FUNCTIONS Section:
+//function to draw one straight line
+func drawOneLine() {
+    turtle.penDown()
+    turtle.left(by: 90)
+    turtle.forward(steps: 38 * squareSize)
+    turtle.penUp()
+    turtle.left(by: 180)
+    turtle.forward(steps: 38 * squareSize)
+    turtle.left(by: 90)
+}
 
+//function to draw a square
+func drawOneSquare() {
+    for _ in stride(from: 1, through: 38 * squareSize, by: 1) {
+        drawOneLine()
+        turtle.penUp()
+        turtle.forward(steps: 1)
+        turtle.penDown()
+    }
+}
 
+//function to move to position for drawing a yellow square
+func moveToDrawYellowSquare() {
+    turtle.forward(steps: 8 * squareSize)
+    turtle.left(by: 90)
+    turtle.forward(steps: 43 * squareSize)
+    turtle.right(by: 109)
+}
+
+//function to move to position for drawing a pink square
+func moveToDrawPinkSquare() {
+    turtle.forward(steps: 58 * squareSize)
+    turtle.left(by: 90)
+    turtle.forward(steps: 7 * squareSize)
+    turtle.right(by: 62)
+}
 
 //SETTING Section:
 //Draw a boundary for the tesselation
@@ -55,14 +90,15 @@ canvas.drawRectangle(at: Point(x: 0, y: 0), width:preferredWidth, height: prefer
 let yellow = Color.init(hue: 51,
                        saturation: 64,
                        brightness: 98,
-                       alpha: 100)
+                       alpha: 50)
 
 let pink = Color.init(hue: 353,
                        saturation: 22,
                        brightness: 100,
-                       alpha: 100)
+                       alpha: 50)
 
 //DRAWING Section:
+canvas.highPerformance = true
 //start at bottom left corner and draw a test line
 //NOTE: use a yellow parker
 turtle.goToHome()
@@ -72,7 +108,7 @@ turtle.penUp()
 turtle.left(by: 90)
 turtle.forward(steps: preferredHeight - 15)
 turtle.right(by: 90)
-turtle.forward(steps: 10)
+turtle.forward(steps: 20)
 turtle.penDown()
 turtle.setPenColor(to: yellow)
 turtle.setPenSize(to: 3)
@@ -83,9 +119,14 @@ turtle.penUp()
 //move back to home
 turtle.goToHome()
 
+//move to position and draw a yellow square
+moveToDrawYellowSquare()
+turtle.setPenColor(to: yellow)
+drawOneSquare()
 
 //return to bottom left corner and draw a test line
 //NOTE: use a pink parker
+turtle.penUp()
 turtle.goToHome()
 
 // Draw a test line outside the tesselation boundary
@@ -93,7 +134,7 @@ turtle.penUp()
 turtle.left(by: 90)
 turtle.forward(steps: preferredHeight - 30)
 turtle.right(by: 90)
-turtle.forward(steps: 10)
+turtle.forward(steps: 20)
 turtle.penDown()
 turtle.setPenColor(to: pink)
 turtle.setPenSize(to: 3)
@@ -103,6 +144,13 @@ turtle.penUp()
 
 //move back to home
 turtle.goToHome()
+
+//move to position and draw a pink square
+moveToDrawPinkSquare()
+turtle.setPenColor(to: pink)
+drawOneSquare()
+
+canvas.highPerformance = false
 /*:
  ## Show the Live View
  Don't see any results?
