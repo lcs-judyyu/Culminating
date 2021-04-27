@@ -4,8 +4,8 @@
  
  Set the size of your desired canvas by adjusting the constants on lines 19 and 20.
  */
-let preferredWidth = 600
-let preferredHeight = 650
+let preferredWidth = 500
+let preferredHeight = 550
 /*:
  ## Required code
  
@@ -36,7 +36,7 @@ PlaygroundPage.current.liveView = canvas
 
  */
 //set a constant
-let squareSize = 6 //preferredWidth / 100
+let squareSize = 5 //preferredWidth / 100
 
 //show axis
 canvas.drawAxes(withScale: true, by: 20, color: Color.blue)

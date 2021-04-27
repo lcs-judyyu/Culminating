@@ -162,7 +162,7 @@ func drawThirdAndFourthRowsOfFigures() {
 func drawOneLine() {
     turtle.penDown()
     turtle.left(by: 135)
-    turtle.forward(steps: Int(round(Double(2 * squareSize) * Double(2.0).squareRoot())))
+    turtle.forward(steps: Int((round(Double(2 * squareSize) * Double(2.0).squareRoot()))))
     turtle.left(by: 180)
     turtle.forward(steps: Int(round(Double(2 * squareSize) * Double(2.0).squareRoot())))
     turtle.left(by: 45)
@@ -350,6 +350,8 @@ turtle.left(by: 90)
 turtle.forward(steps: 2 * squareSize)
 turtle.right(by: 90)
 drawNineLines()
+
+canvas.copyToClipboard()
 /*:
  ## Show the Live View
  Don't see any results?
