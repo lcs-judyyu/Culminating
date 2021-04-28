@@ -212,7 +212,6 @@ turtle.goToHome()
 canvas.highPerformance = false
 
 //draw the figure
-drawFigure()
 /*:
  ## Show the Live View
  Don't see any results?

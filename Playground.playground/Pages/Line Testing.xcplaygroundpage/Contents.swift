@@ -76,6 +76,40 @@ turtle.forward(steps: 66 * squareSize / 5)
 //chin
 //moon
 
+//test the moon part
+turtle.penUp()
+turtle.goToHome()
+//move to starting point
+turtle.forward(steps: 74 * squareSize)
+turtle.left(by: 90)
+turtle.forward(steps: 50 * squareSize)
+turtle.right(by: 25)
+//start
+//one to five
+turtle.penDown()
+turtle.right(by: 180)
+turtle.forward(steps: 20 * squareSize / 3)
+turtle.right(by: 14)
+turtle.forward(steps: 6 * squareSize)
+turtle.right(by: 17)
+turtle.forward(steps: 20 * squareSize / 3)
+turtle.right(by: 7)
+turtle.forward(steps: 20 * squareSize / 3)
+turtle.right(by: 15)
+turtle.forward(steps: 23 * squareSize / 4)
+//six to ten
+turtle.right(by: 11)
+turtle.forward(steps: 15 * squareSize / 2)
+turtle.right(by: 10)
+turtle.forward(steps: 7 * squareSize / 2)
+turtle.right(by: 14)
+turtle.forward(steps: 5 * squareSize )
+turtle.right(by: 7)
+turtle.forward(steps: 19 * squareSize / 3)
+turtle.right(by: 13)
+turtle.forward(steps: 26 * squareSize / 3)
+
+
 
 /*:
  ## Show the Live View
