@@ -39,7 +39,7 @@ PlaygroundPage.current.liveView = canvas
 let squareSize = 5 //preferredWidth / 100
 
 //show axis
-canvas.drawAxes(withScale: true, by: 20, color: Color.blue)
+//canvas.drawAxes(withScale: true, by: 20, color: Color.blue)
 
 //FUNCTIONS Section:
 //function to draw one straight line
@@ -75,7 +75,7 @@ func moveToDrawYellowSquare() {
 func moveToDrawPinkSquare() {
     turtle.forward(steps: 58 * squareSize)
     turtle.left(by: 90)
-    turtle.forward(steps: 7 * squareSize)
+    turtle.forward(steps: 12 * squareSize)
     turtle.right(by: 62)
 }
 
@@ -103,7 +103,7 @@ func drawFigure() {
     turtle.penDown()
     turtle.right(by: 160)
     turtle.forward(steps: 20 * squareSize / 3)
-    turtle.right(by: 14)
+    turtle.right(by: 19)
     turtle.forward(steps: 6 * squareSize)
     turtle.right(by: 17)
     turtle.forward(steps: 20 * squareSize / 3)
@@ -159,14 +159,14 @@ func drawFigure() {
     turtle.left(by: 19)
     turtle.forward(steps: 16 * squareSize / 3)
     turtle.left(by: 35)
-    turtle.forward(steps: 7 * squareSize)
+    turtle.forward(steps: 6 * squareSize)
     //nose
     turtle.right(by: 45)
-    turtle.forward(steps: 40 * squareSize / 3)
+    turtle.forward(steps: 12 * squareSize)
     turtle.left(by: 55)
     turtle.forward(steps: 3 * squareSize / 3)
     turtle.left(by: 40)
-    turtle.forward(steps: 3 * squareSize)
+    turtle.forward(steps: 5 * squareSize / 2)
     turtle.left(by: 30)
     turtle.forward(steps: 2 * squareSize)
     //mouth
@@ -186,17 +186,17 @@ func drawFigure() {
     turtle.forward(steps: 3 * squareSize / 2)
     //chin
     turtle.right(by: 48)
-    turtle.forward(steps: 2 * squareSize)
+    turtle.forward(steps: 3 * squareSize)
     turtle.left(by: 15)
-    turtle.forward(steps: 9 * squareSize / 5)
+    turtle.forward(steps: 2 * squareSize)
     turtle.left(by: 33)
     turtle.forward(steps: 5 * squareSize / 2)
     turtle.left(by: 50)
     turtle.forward(steps: 2 * squareSize)
     turtle.left(by: 12)
     turtle.forward(steps: 41 * squareSize / 3)
-    turtle.left(by: 26)
-    turtle.forward(steps: 89 * squareSize / 6)
+    turtle.left(by: 23)
+    turtle.forward(steps: 15 * squareSize)
 }
 
 //SETTING Section:
@@ -217,10 +217,15 @@ let pink = Color.init(hue: 353,
                        brightness: 100,
                        alpha: 50)
 
+let darkgrey = Color.init(hue: 0,
+                       saturation: 0,
+                       brightness: 20,
+                       alpha: 100)
+
 //DRAWING Section:
 canvas.highPerformance = true
 //start at bottom left corner and draw a test line
-//NOTE: use a yellow parker
+//NOTE: use a yellow marker
 turtle.goToHome()
 
 // Draw a test line outside the tesselation boundary
@@ -245,7 +250,7 @@ turtle.setPenColor(to: yellow)
 drawOneSquare()
 
 //return to bottom left corner and draw a test line
-//NOTE: use a pink parker
+//NOTE: use a pink marker
 turtle.penUp()
 turtle.goToHome()
 
@@ -282,7 +287,7 @@ turtle.forward(steps: preferredHeight - 20)
 turtle.right(by: 90)
 turtle.forward(steps: 250)
 turtle.penDown()
-turtle.setPenColor(to: Color.black)
+turtle.setPenColor(to: darkgrey)
 turtle.setPenSize(to: 1)
 turtle.forward(steps: 30 * squareSize)
 turtle.penUp()
@@ -295,6 +300,8 @@ canvas.highPerformance = false
 
 //draw the figure
 drawFigure()
+
+canvas.copyToClipboard()
 /*:
  ## Show the Live View
  Don't see any results?
