@@ -87,34 +87,116 @@ func drawFigure() {
     turtle.left(by: 90)
     turtle.forward(steps: 86 * squareSize)
     //start drawing
+
+    //moon
+
+    //test the moon part
+    turtle.penUp()
+    turtle.goToHome()
+    //move to starting point
+    turtle.forward(steps: 74 * squareSize)
+    turtle.left(by: 90)
+    turtle.forward(steps: 50 * squareSize)
+    turtle.right(by: 25)
+    //start
+    //one to five
+    turtle.penDown()
+    turtle.right(by: 160)
+    turtle.forward(steps: 20 * squareSize / 3)
+    turtle.right(by: 14)
+    turtle.forward(steps: 6 * squareSize)
+    turtle.right(by: 17)
+    turtle.forward(steps: 20 * squareSize / 3)
+    turtle.right(by: 7)
+    turtle.forward(steps: 20 * squareSize / 3)
+    turtle.right(by: 15)
+    turtle.forward(steps: 23 * squareSize / 4)
+    //six to ten
+    turtle.right(by: 11)
+    turtle.forward(steps: 15 * squareSize / 2)
+    turtle.right(by: 10)
+    turtle.forward(steps: 7 * squareSize / 2)
+    turtle.right(by: 14)
+    turtle.forward(steps: 5 * squareSize )
+    turtle.right(by: 7)
+    turtle.forward(steps: 19 * squareSize / 3)
+    turtle.right(by: 13)
+    turtle.forward(steps: 26 * squareSize / 3)
+    //eleven to fifteen
+    turtle.right(by: 20)
+    turtle.forward(steps: 25 * squareSize / 3)
+    turtle.right(by: 16)
+    turtle.forward(steps: 10 * squareSize / 3)
+    turtle.right(by: 10)
+    turtle.forward(steps: 5 * squareSize)
+    turtle.right(by:8)
+    turtle.forward(steps: 7 * squareSize)
+    turtle.right(by: 20)
+    turtle.forward(steps: 5 * squareSize)
+    //sixteen to twenty
+    turtle.right(by: 7)
+    turtle.forward(steps: 20 * squareSize / 3)
+    turtle.right(by: 18)
+    turtle.forward(steps: 23 * squareSize / 3)
+    turtle.right(by: 12)
+    turtle.forward(steps: 20 * squareSize / 3)
+    turtle.right(by: 9)
+    turtle.forward(steps: 8 * squareSize)
+    turtle.right(by: 8)
+    turtle.forward(steps: 7 * squareSize)
+    //twenty-one to twenty-three
+    turtle.right(by: 8)
+    turtle.forward(steps: 6 * squareSize)
+    turtle.right(by: 5)
+    turtle.forward(steps: 6 * squareSize)
+
     //forehead
     turtle.penDown()
-    turtle.left(by: 131)
+    turtle.right(by: 149)
     turtle.forward(steps: 15 * squareSize / 2)
-    turtle.left(by: 8)
-    turtle.forward(steps: 10 * squareSize)
-    turtle.left(by: 3)
-    turtle.forward(steps: 16 * squareSize / 5)
-    
-    turtle.left(by: 3)
-    turtle.forward(steps: 10 * squareSize / 3)
-    turtle.left(by: 44)
-    turtle.forward(steps: 10 * squareSize / 3)
-    turtle.left(by: 16)
-    turtle.forward(steps: 47 * squareSize / 10)
-    
-    turtle.left(by: 25)
-    turtle.forward(steps: 42 * squareSize / 10)
-    turtle.right(by: 25)
-    turtle.forward(steps: 3 * squareSize / 2)
-    
+    turtle.left(by: 6)
+    turtle.forward(steps: 15 * squareSize / 2)
+    turtle.left(by: 19)
+    turtle.forward(steps: 16 * squareSize / 3)
+    turtle.left(by: 35)
+    turtle.forward(steps: 7 * squareSize)
     //nose
-    turtle.right(by: 50)
-    turtle.forward(steps: 66 * squareSize / 5)
+    turtle.right(by: 45)
+    turtle.forward(steps: 40 * squareSize / 3)
+    turtle.left(by: 55)
+    turtle.forward(steps: 3 * squareSize / 3)
+    turtle.left(by: 40)
+    turtle.forward(steps: 3 * squareSize)
+    turtle.left(by: 30)
+    turtle.forward(steps: 2 * squareSize)
     //mouth
+    turtle.right(by: 47)
+    turtle.forward(steps: 3 * squareSize / 2)
+    turtle.right(by: 70)
+    turtle.forward(steps: 3 * squareSize / 2)
+    turtle.left(by: 59)
+    turtle.forward(steps: 1 * squareSize / 2)
+    turtle.left(by: 41)
+    turtle.forward(steps: 2 * squareSize)
+    turtle.right(by: 125)
+    turtle.forward(steps: 9 * squareSize / 5)
+    turtle.left(by: 73)
+    turtle.forward(steps: 1 * squareSize)
+    turtle.left(by: 22)
+    turtle.forward(steps: 3 * squareSize / 2)
     //chin
-    //moon
-    
+    turtle.right(by: 48)
+    turtle.forward(steps: 2 * squareSize)
+    turtle.left(by: 15)
+    turtle.forward(steps: 9 * squareSize / 5)
+    turtle.left(by: 33)
+    turtle.forward(steps: 5 * squareSize / 2)
+    turtle.left(by: 50)
+    turtle.forward(steps: 2 * squareSize)
+    turtle.left(by: 12)
+    turtle.forward(steps: 41 * squareSize / 3)
+    turtle.left(by: 26)
+    turtle.forward(steps: 89 * squareSize / 6)
 }
 
 //SETTING Section:
@@ -212,6 +294,7 @@ turtle.goToHome()
 canvas.highPerformance = false
 
 //draw the figure
+drawFigure()
 /*:
  ## Show the Live View
  Don't see any results?

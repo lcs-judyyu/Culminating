@@ -110,19 +110,17 @@ turtle.right(by: 8)
 turtle.forward(steps: 6 * squareSize)
 turtle.right(by: 5)
 turtle.forward(steps: 6 * squareSize)
-//turtle.right(by: 13)
-//turtle.forward(steps: 25 * squareSize / 3)
-
 
 //forehead
 turtle.penDown()
-turtle.right(by: 143)
-turtle.forward(steps: 15 * squareSize)
+turtle.right(by: 149)
+turtle.forward(steps: 15 * squareSize / 2)
+turtle.left(by: 6)
+turtle.forward(steps: 15 * squareSize / 2)
 turtle.left(by: 19)
 turtle.forward(steps: 16 * squareSize / 3)
 turtle.left(by: 35)
-turtle.forward(steps: 8 * squareSize)
-
+turtle.forward(steps: 7 * squareSize)
 //nose
 turtle.right(by: 45)
 turtle.forward(steps: 40 * squareSize / 3)
@@ -150,6 +148,16 @@ turtle.forward(steps: 3 * squareSize / 2)
 //chin
 turtle.right(by: 48)
 turtle.forward(steps: 2 * squareSize)
+turtle.left(by: 15)
+turtle.forward(steps: 9 * squareSize / 5)
+turtle.left(by: 33)
+turtle.forward(steps: 5 * squareSize / 2)
+turtle.left(by: 50)
+turtle.forward(steps: 2 * squareSize)
+turtle.left(by: 12)
+turtle.forward(steps: 41 * squareSize / 3)
+turtle.left(by: 26)
+turtle.forward(steps: 89 * squareSize / 6)
 /*:
  ## Show the Live View
  Don't see any results?
